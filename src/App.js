@@ -10,7 +10,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('https://randomuser.me/api/')
+    fetch('https://fakestoreapi.com/users')
       .then(res => res.json())
       .then(users => this.setState({ users }))
       .catch(err => console.log(err));  
