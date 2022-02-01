@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Table from './components/Table'
+
 import './App.css';
 
 class App extends Component {
@@ -10,7 +12,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('https://fakestoreapi.com/users')
+    fetch('https://jsonplaceholder.typicode.com/users')
       .then(res => res.json())
       .then(users => this.setState({ users }))
       .catch(err => console.log(err));  
@@ -19,11 +21,12 @@ class App extends Component {
   
   render() {
     console.log(this.state);
+    const { users } = this.state;
     
     return (
       <div className="App">
-        <h1>Random User</h1>
-        
+        <h1>User Info</h1>
+        <Table users = { users }/>
       </div>
     )
       
