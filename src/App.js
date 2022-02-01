@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Table from './components/Table'
+import { Route, Routes, Link } from 'react-router-dom'
 
 import './App.css';
 
@@ -26,6 +27,9 @@ class App extends Component {
     return (
       <div className="App">
         <h1>User Info</h1>
+        <Routes>
+          <Route path='/' element={<Home />}/>
+        </Routes>
         <Table users = { users }/>
       </div>
     )
