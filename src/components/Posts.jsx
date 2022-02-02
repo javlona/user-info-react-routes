@@ -1,23 +1,28 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom'
 
-class Posts extends Component {
-    
-    pushHandler = () => {
-        console.log(this.props);
+function Posts( {data} ) {
+
+    const navigate = useNavigate()
+
+    const gateHandler = (id) => {
+        navigate(`/posts/${id}`)
     }
-  
-    render() {
-        const { data } = this.props;
-        console.log(data);
 
+    const pushHandler = () => {
+    }
+
+    console.log(data);
+    
+    if(!data?.length) return <h2>Loading........</h2>
+    
     return (
         <div>
             <ul>
                 {
-                    data.map(post => (
-                        <li key={ post.id } >
-                            <Link to={`/posts/${ post.id }` }>{ post.title }</Link>
+                    data?.map(post => (
+                        <li key={ post.id } onClick={() => gateHandler(post.id)}>
+                            { post.title }
                         </li>
                     ))
                 }
@@ -25,7 +30,6 @@ class Posts extends Component {
             <Link to={ "/" }>back</Link>
         </div>
     )
-  }
 }
 
 export default Posts;

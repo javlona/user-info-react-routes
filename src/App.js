@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Home from './components/Home'
 import Table from './components/Table'
 import Posts from './components/Posts'
-import PostBody from './components/Posts'
+import PostBody from './components/PostBody'
 import Alert from './components/Alerts'
 import User from './components/User'
 import { Route, Routes, Link } from 'react-router-dom'
