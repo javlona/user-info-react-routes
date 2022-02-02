@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Table from './components/Table'
 import Posts from './components/Posts'
+import Alert from './components/Alerts'
 import { Route, Routes, Link } from 'react-router-dom'
 
 import './App.css';
@@ -11,6 +12,9 @@ class App extends Component {
     this.state = {
       users: [],
       posts: [],
+      deleteAlert: false,
+      modal: false,
+      selected: {},
     }
   }
 
@@ -28,8 +32,20 @@ class App extends Component {
   //     .catch(err => console.log(err));
   // }
 
-  deleteHandler = () => {
-    
+  deleteHandler = (id) => {
+    const filteredUsers = this.state.users.filter( user => user.id !== id)
+    this.setState({ users: filteredUsers })
+  }
+
+  selectHandler = (id) => {
+    const selected  = this.state.users.find( user => user.id === id)
+    this.setState({ selected, modal: true })
+  }
+
+
+
+  deleteAlert = () => {
+    this.setState({ deleteAlert: true })
   }
   
   render() {
@@ -41,8 +57,11 @@ class App extends Component {
         <h1>Users</h1>
         <h1>Posts</h1>
 
-        <Table users = { users }/>
-        {/* <Posts data = { posts } /> */}
+        <Table 
+          users = { users }
+          deleteHandler = { this.deleteHandler }
+          selectHandler = { this.selectHandler }/>
+        <Alert />
       </div>
     )
       

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class Table extends Component {
     render() {
-        const { users } = this.props;
+        const { users, deleteHandler, selectHandler } = this.props;
 
         return (
             <table>
@@ -25,8 +24,8 @@ class Table extends Component {
                                 <td>{user.phone}</td>
                                 <td>{user.address.city}</td>
                                 <td>
-                                    <button>delete</button>
-                                    <button>edit</button>
+                                    <button onClick={ () => deleteHandler(user.id) }>delete</button>
+                                    <button onClick={ () => selectHandler(user.id) }>edit</button>
                                 </td>
                             </tr>
                         ))
