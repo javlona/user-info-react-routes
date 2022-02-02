@@ -63,7 +63,7 @@ class App extends Component {
             users = { users }
             deleteHandler = { this.deleteHandler }
             selectHandler = { this.selectHandler }/> }/>
-          <Route path="/user:id" element={ <User /> } />
+          <Route path="/users:id" element={ <User /> } />
         </Routes>
         
         <Alert />
