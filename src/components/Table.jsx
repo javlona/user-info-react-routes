@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class Table extends Component {
     render() {
@@ -12,6 +13,7 @@ class Table extends Component {
                         <th>Email</th>
                         <th>Phone</th>
                         <th>Address</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -22,6 +24,10 @@ class Table extends Component {
                                 <td>{user.email}</td>
                                 <td>{user.phone}</td>
                                 <td>{user.address.city}</td>
+                                <td>
+                                    <button>delete</button>
+                                    <button>edit</button>
+                                </td>
                             </tr>
                         ))
                     }
