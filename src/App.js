@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import Home from './components/Home'
 import Table from './components/Table'
 import Posts from './components/Posts'
 import Alert from './components/Alerts'
+import User from './components/User'
 import { Route, Routes, Link } from 'react-router-dom'
 
 import './App.css';
@@ -54,13 +56,16 @@ class App extends Component {
     
     return (
       <div className="App">
-        <h1>Users</h1>
-        <h1>Posts</h1>
-
-        <Table 
-          users = { users }
-          deleteHandler = { this.deleteHandler }
-          selectHandler = { this.selectHandler }/>
+        
+        <Routes>
+          <Route path="/" element={ <Home /> } />
+          <Route path="/users" element={ <Table 
+            users = { users }
+            deleteHandler = { this.deleteHandler }
+            selectHandler = { this.selectHandler }/> }/>
+          <Route path="/user:id" element={ <User /> } />
+        </Routes>
+        
         <Alert />
       </div>
     )

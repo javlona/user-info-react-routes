@@ -19,6 +19,11 @@ body {
   transition: all 0.2s ease-in-out;
 }
 
+a {
+  display: block;
+  margin: 10px;
+}
+
 h1 {
   text-transform: uppercase;
 }
