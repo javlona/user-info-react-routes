@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Home from './components/Home'
 import Table from './components/Table'
 import Posts from './components/Posts'
+import PostBody from './components/Posts'
 import Alert from './components/Alerts'
 import User from './components/User'
 import { Route, Routes, Link } from 'react-router-dom'
@@ -25,14 +26,12 @@ class App extends Component {
       .then(res => res.json())
       .then(users => this.setState({ users }))
       .catch(err => console.log(err));
-  }
 
-  // componentDidMount() {
-  //   fetch('https://jsonplaceholder.typicode.com/posts')
-  //     .then(res => res.json())
-  //     .then(posts => this.setState({ posts }))
-  //     .catch(err => console.log(err));
-  // }
+    fetch('https://jsonplaceholder.typicode.com/posts')
+      .then(res => res.json())
+      .then(posts => this.setState({ posts }))
+      .catch(err => console.log(err));
+  }
 
   deleteHandler = (id) => {
     const filteredUsers = this.state.users.filter( user => user.id !== id)
@@ -63,7 +62,9 @@ class App extends Component {
             users = { users }
             deleteHandler = { this.deleteHandler }
             selectHandler = { this.selectHandler }/> }/>
-          <Route path="/users:id" element={ <User /> } />
+          <Route path="/users/:id" element={ <User /> } />
+          <Route path="/posts" element={ <Posts data={ posts }/>  } />
+          <Route path="/posts/:id" element={ <PostBody /> } />
         </Routes>
         
         <Alert />
